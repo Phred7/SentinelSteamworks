@@ -88,7 +88,8 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		autonomousCommand = (Command) auto.getSelected();
-		// System.out.println("Auto selected: " + autoSelected);
+	    System.out.println("Auto selected: " + auto.getSelected());
+	   
 
 		Robot.driveTrain.ResetEncoders();
 
@@ -99,6 +100,8 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("encoder value right", RobotMap.encoderRight.get());
+        SmartDashboard.putNumber("encoder value left",  RobotMap.encoderLeft.get());
 
 	}
 
