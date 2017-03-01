@@ -47,6 +47,8 @@ public class RobotMap {
     public static DoubleSolenoid GearSinglePiston;
     public static DoubleSolenoid GearDoublePiston;
     public static final double sensitivity = 0.1;
+    
+    public static double tinch = 76.43;
 
 
 
@@ -90,10 +92,12 @@ public class RobotMap {
         
         encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
         encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);
+        encoderRight.setDistancePerPulse(1.0 / tinch);
        // encoderRight.reset();
         
         encoderLeft = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
         encoderLeft.setPIDSourceType(PIDSourceType.kDisplacement);
+        encoderLeft.setDistancePerPulse(1.0/ tinch);
        // encoderLeft.reset();
         
         CameraServer server1 = CameraServer.getInstance();

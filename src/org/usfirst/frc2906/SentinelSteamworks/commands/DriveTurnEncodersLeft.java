@@ -1,6 +1,7 @@
 package org.usfirst.frc2906.SentinelSteamworks.commands;
 
 import org.usfirst.frc2906.SentinelSteamworks.Robot;
+import org.usfirst.frc2906.SentinelSteamworks.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,36 +9,48 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveTurnEncodersLeft extends Command {
-		int degrees;
-    public DriveTurnEncodersLeft(int degrees) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+		int driveDistance;
+		int botTurnRadius;
+		int wheelDia;	
+		int userDegrees;
+		double botSpeed;
+		double botTurnC;
+		double endDistance;
+		double pivotDriveDistance;
+		double distancePerDegree; //assumed to be in inches only
+		double wheelC;
+	
+		
+    public DriveTurnEncodersLeft(double speed, int userDegrees) {
     	requires(Robot.driveTrain);
-    	degrees = degrees;
+    	botTurnRadius = 18;
+    	wheelDia = 6;
+    	botTurnC = (2*(Math.PI*botTurnRadius));
+    	wheelC = 6*Math.PI;
+    	distancePerDegree = (botTurnC/360); //assumed to be in inches only (not conversion yet)
+    	pivotDriveDistance = (1/2)*(distancePerDegree)*userDegrees;
+    	botSpeed = speed;
+    	// 1/2 is for arcade drive pivot: it should be one half the distance since both wheels move equally
     	
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
+    	endDistance = Robot.driveTrain.getLeftDistance() + pivotDriveDistance;
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.turnLeftEncs(degrees);
+    	Robot.driveTrain.arcadeDrive(botSpeed, 0.5); //may be 90 or -0.5 or 1
+    	
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (Robot.driveTrain.getLeftDistance() >= endDistance); //MAY NEED TO ADD ABS TO FUNCTION PROPPERLY TESTING IS REQUIRED
     }
 
-    // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.stop();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     }
 }

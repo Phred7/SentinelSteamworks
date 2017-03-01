@@ -8,36 +8,45 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveTurnEncodersRight extends Command {
-		int degrees;
-    public DriveTurnEncodersRight(int degrees) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	int driveDistance;
+	int botTurnRadius;
+	int wheelDia;	
+	int userDegrees;
+	double botSpeed;
+	double botTurnC;
+	double endDistance;
+	double pivotDriveDistance;
+	double distancePerDegree; //assumed to be in inches only
+	double wheelC;
+    public DriveTurnEncodersRight(double speed, int userDegrees) {
+
     	requires(Robot.driveTrain);
-    	degrees = degrees;
+    	botTurnRadius = 18;
+    	wheelDia = 6;
+    	botTurnC = (2*(Math.PI*botTurnRadius));
+    	wheelC = 6*Math.PI;
+    	distancePerDegree = (botTurnC/360); //assumed to be in inches only (not conversion yet)
+    	pivotDriveDistance = (1/2)*(distancePerDegree)*userDegrees;
+    	botSpeed = speed;
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
+    	endDistance = Robot.driveTrain.getLeftDistance() + pivotDriveDistance;
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.turnRightEnc(90);
+    	Robot.driveTrain.arcadeDrive(botSpeed, -0.5);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return ((Math.abs(Robot.driveTrain.getLeftDistance())) >= endDistance); //MAY NEED TO CHANGE ALL ABS TO GET THIS TO WORK OR JUST REMOVE IT
     }
 
-    // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.stop();
     	
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     }
 }

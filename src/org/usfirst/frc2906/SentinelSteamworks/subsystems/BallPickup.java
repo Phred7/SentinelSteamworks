@@ -16,23 +16,17 @@ public class BallPickup extends Subsystem {
     
     private final SpeedController pickup = RobotMap.ballPickupPickup;
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
     
-
-        // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
     }
 
-    //This pushes the ball out by setting speed of the motor to -1.0.
+    //This pushes the ball out speed of 100%.
     public void BallPickUpOut() {
     	pickup.set(-1.0);
-
     	
     }
-    //This turns the motor off.
+    //motor off.
     public void BallPickUpOff() {
     	pickup.set(0);
     
