@@ -98,6 +98,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
+		
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("encoder value right", RobotMap.encoderRight.get());
         SmartDashboard.putNumber("encoder value left",  RobotMap.encoderLeft.get());
