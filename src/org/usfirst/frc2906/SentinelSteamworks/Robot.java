@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	Command AutoGearOnLeft;
 	Command AutoGearOnRight;
 	Command AutoGearStrait;
+	Command AutoTestDriveOnly;
 
 	public static OI oi;
 	public static DriveTrain driveTrain;
@@ -48,8 +49,9 @@ public class Robot extends IterativeRobot {
 	final String autoGearOnLeft = "GearOnLeft";
 	final String autoGearOnRight = "GearOnRight";
 	final String autoGearOnStrait = "GearOnAhead";
+	final String autoTestDriveOnly = "Test Drive";
 
-	String[] autoList = { autoNone, autoGearOnLeft, autoGearOnRight, autoGearOnStrait };
+	String[] autoList = { autoNone, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly };
 
 	public static CameraServer cameraServer;
 
@@ -71,6 +73,7 @@ public class Robot extends IterativeRobot {
 		auto.addObject("GearOnLeft", new AutoGearOnLeft());
 		auto.addObject("GearOnRight", new AutoGearOnRight());
 		auto.addObject("GearAhead", new AutoGearStrait());
+		auto.addObject("Test Drive", new AutoTestDriveOnly());
 		SmartDashboard.putData("Auto modes", auto);
 	}
 
