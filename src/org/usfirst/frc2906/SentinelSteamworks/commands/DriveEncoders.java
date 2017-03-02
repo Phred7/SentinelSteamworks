@@ -27,7 +27,7 @@ public class DriveEncoders extends Command {
     }
 
     protected void execute() {
-    	Robot.driveTrain.arcadeDrive(botSpeed, 0);
+    	Robot.driveTrain.tankDrive(botSpeed, botSpeed);
     }
 
     protected boolean isFinished() {
