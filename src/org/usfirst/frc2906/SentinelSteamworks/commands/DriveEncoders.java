@@ -13,6 +13,8 @@ public class DriveEncoders extends Command {
 	int driveDistance;
 	double endDistance;
 	double botSpeed;
+	double leftSpeed;
+	double rightSpeed;
 
     public DriveEncoders(double speed, int userFeet, int userInches) {
 
@@ -20,6 +22,8 @@ public class DriveEncoders extends Command {
     	
     	driveDistance = userInches + (12 * userFeet);
     	botSpeed = speed;
+    	rightSpeed = botSpeed*-1;
+    	leftSpeed = botSpeed;
     }
 
     protected void initialize() {
@@ -27,7 +31,7 @@ public class DriveEncoders extends Command {
     }
 
     protected void execute() {
-    	Robot.driveTrain.tankDrive(botSpeed, botSpeed);
+    	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
     }
 
     protected boolean isFinished() {
