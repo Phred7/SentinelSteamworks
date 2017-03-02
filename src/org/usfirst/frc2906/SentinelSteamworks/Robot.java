@@ -102,8 +102,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("encoder value right", Math.abs(RobotMap.encoderRight.get()));
-        SmartDashboard.putNumber("encoder value left",  Math.abs(RobotMap.encoderLeft.get()));
+		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
+        SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));
 
 	}
 
@@ -115,8 +115,8 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("encoder value right", Math.abs(RobotMap.encoderRight.get()));
-        SmartDashboard.putNumber("encoder value left",  Math.abs(RobotMap.encoderLeft.get()));
+		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
+        SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));
 	}
 
 	public void testPeriodic() {

@@ -19,6 +19,8 @@ public class DriveTurnEncodersLeft extends Command {
 		double pivotDriveDistance;
 		double distancePerDegree; //assumed to be in inches only
 		double wheelC;
+		double leftSpeed;
+		double rightSpeed;
 	
 		
     public DriveTurnEncodersLeft(double speed, int userDegrees) {
@@ -30,16 +32,18 @@ public class DriveTurnEncodersLeft extends Command {
     	distancePerDegree = (botTurnC/360); //assumed to be in inches only (not conversion yet)
     	pivotDriveDistance = (1/2)*(distancePerDegree)*userDegrees;
     	botSpeed = speed;
+    	leftSpeed = botSpeed*-1;
+    	rightSpeed = botSpeed;
     	// 1/2 is for arcade drive pivot: it should be one half the distance since both wheels move equally
     	
     }
 
     protected void initialize() {
-    	endDistance = Robot.driveTrain.getRightDistance() + pivotDriveDistance;
+    	endDistance = Robot.driveTrain.getRightDistance() - pivotDriveDistance;
     }
 
     protected void execute() {
-    	Robot.driveTrain.arcadeDrive(botSpeed, 0.5); //may be 90 or -0.5 or 1
+    	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
     	
     }
 
