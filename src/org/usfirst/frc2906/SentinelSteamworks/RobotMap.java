@@ -87,7 +87,7 @@ public class RobotMap {
         
         encoderLeft = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
         encoderLeft.setPIDSourceType(PIDSourceType.kDisplacement);
-        encoderLeft.setDistancePerPulse(1.0/ tinch);
+        encoderLeft.setDistancePerPulse(1.0 / tinch);
         encoderLeft.reset();
         
         CameraServer server1 = CameraServer.getInstance();

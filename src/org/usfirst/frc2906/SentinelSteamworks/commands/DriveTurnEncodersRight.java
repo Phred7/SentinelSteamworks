@@ -43,7 +43,7 @@ public class DriveTurnEncodersRight extends Command {
     }
 
     protected boolean isFinished() {
-        return (Robot.driveTrain.getRightDistance() >= endDistance); //MAY NEED TO CHANGE ALL ABS TO GET THIS TO WORK OR JUST REMOVE IT
+        return (Robot.driveTrain.getRightDistance() <= endDistance); //MAY NEED TO CHANGE ALL ABS TO GET THIS TO WORK OR JUST REMOVE IT
     }
 
     protected void end() {
