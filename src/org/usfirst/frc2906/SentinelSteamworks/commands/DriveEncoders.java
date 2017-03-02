@@ -23,7 +23,7 @@ public class DriveEncoders extends Command {
     }
 
     protected void initialize() {
-    	endDistance = Robot.driveTrain.getLeftDistance() + driveDistance;
+    	endDistance = Robot.driveTrain.getRightDistance() + driveDistance;
     }
 
     protected void execute() {
@@ -31,7 +31,7 @@ public class DriveEncoders extends Command {
     }
 
     protected boolean isFinished() {
-        return (Robot.driveTrain.getLeftDistance() >= endDistance);
+        return (Robot.driveTrain.getRightDistance() >= endDistance);
     }
 
     protected void end() {

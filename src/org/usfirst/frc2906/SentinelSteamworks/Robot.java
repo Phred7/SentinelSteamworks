@@ -75,10 +75,12 @@ public class Robot extends IterativeRobot {
 		auto.addObject("GearAhead", new AutoGearStrait());
 		auto.addObject("Test Drive", new AutoTestDriveOnly());
 		SmartDashboard.putData("Auto modes", auto);
+		
+		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
 	}
 
 	public void disabledInit() {
-
+		Robot.driveTrain.ResetEncoders();
 	}
 
 	public void disabledPeriodic() {
@@ -100,8 +102,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("encoder value right", RobotMap.encoderRight.get());
-        SmartDashboard.putNumber("encoder value left",  RobotMap.encoderLeft.get());
+		SmartDashboard.putNumber("encoder value right", Math.abs(RobotMap.encoderRight.get()));
+        SmartDashboard.putNumber("encoder value left",  Math.abs(RobotMap.encoderLeft.get()));
 
 	}
 
@@ -113,8 +115,8 @@ public class Robot extends IterativeRobot {
 
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("encoder value right", RobotMap.encoderRight.get());
-		SmartDashboard.putNumber("encoder value left", RobotMap.encoderLeft.get());
+		SmartDashboard.putNumber("encoder value right", Math.abs(RobotMap.encoderRight.get()));
+        SmartDashboard.putNumber("encoder value left",  Math.abs(RobotMap.encoderLeft.get()));
 	}
 
 	public void testPeriodic() {

@@ -13,13 +13,17 @@ public class AutoTestDriveOnly extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new BallPickUpInnn());
+    	
+    	 addSequential(new DriveEncoders(.4, 2, 6));
+    	 addSequential(new GearRelease());
+    	 addSequential(new DriveTurnEncodersRight(.3, 90));
+    	 addSequential(new DriveTurnEncodersLeft(.3, 90));
+    	/*
     	addSequential(new LiftUp());
     	addSequential(new WaitCommand(.2));
     	addParallel(new LiftStop());
-    	addParallel(new BallPickUpOff());
     	addSequential(new GearRelease());
-    	
+    	*/
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
