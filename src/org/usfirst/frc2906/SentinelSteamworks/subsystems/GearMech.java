@@ -31,19 +31,19 @@ public class GearMech extends Subsystem {
 
     }
     
-    public void release(){
+    public void GearRelease(){
     	piston.set(Value.kForward);
     }
     
-    public void hold(){
+    public void GearHold(){
     	piston.set(Value.kReverse);
     }
     
-    public void pistonsOut(){
+    public void GearMechOut(){
     	doublePiston.set(Value.kForward);
     }
     
-    public void pistonsIn(){
+    public void GearMechIn(){
     	doublePiston.set(Value.kReverse);
     }
 }

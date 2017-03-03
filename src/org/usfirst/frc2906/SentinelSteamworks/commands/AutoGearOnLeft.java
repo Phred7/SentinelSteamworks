@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class AutoGearOnLeft extends CommandGroup {
 
     public AutoGearOnLeft() {
+    	
+    	addSequential(new DriveTurnEncodersLeft(0.7, 45));
+    	/*
     	addParallel(new GearHold());
 		addParallel(new GearMechIn());
 		addSequential(new DriveEncoders(0.8, 12, 0));
@@ -22,6 +25,6 @@ public class AutoGearOnLeft extends CommandGroup {
 		addSequential(new DriveTurnEncodersLeft(.4, 45));
 		addSequential(new DriveEncoders(.8, 2, 6));
 		addSequential(new DriveStop());
-
+*/
     }
 }

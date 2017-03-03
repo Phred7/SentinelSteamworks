@@ -14,10 +14,10 @@ public class AutoTestDriveOnly extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	
-    	 addSequential(new DriveEncoders(.4, 2, 6));
-    	 addSequential(new GearRelease());
+    	// addSequential(new DriveEncoders(.4, 2, 6));
+    	 //addSequential(new GearRelease());
     	 addSequential(new DriveTurnEncodersRight(.3, 90));
-    	 addSequential(new DriveTurnEncodersLeft(.3, 90));
+    	 addSequential(new DriveTurnEncodersLeft(.3, 45));
     	/*
     	addSequential(new LiftUp());
     	addSequential(new WaitCommand(.2));

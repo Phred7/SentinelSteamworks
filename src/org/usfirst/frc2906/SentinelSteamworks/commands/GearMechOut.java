@@ -18,7 +18,7 @@ public class GearMechOut extends Command {
     }
 
     protected void execute() {
-    	Robot.gearMech.pistonsOut();
+    	Robot.gearMech.GearMechOut();
     }
 
     protected boolean isFinished() {

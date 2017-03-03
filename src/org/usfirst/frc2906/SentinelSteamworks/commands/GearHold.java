@@ -18,7 +18,7 @@ public class GearHold extends Command {
     }
 
     protected void execute() {
-    	Robot.gearMech.hold();
+    	Robot.gearMech.GearHold();
     }
 
     protected boolean isFinished() {

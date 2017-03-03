@@ -1,5 +1,7 @@
 package org.usfirst.frc2906.SentinelSteamworks.commands;
 
+import java.awt.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
@@ -10,8 +12,8 @@ public class AutoGearStrait extends CommandGroup {
 
     public AutoGearStrait() {
 
-    		addParallel(new GearHold());
-    		addParallel(new GearMechIn());
+    		
+    		addSequential(new GearMechIn());
     		addSequential(new DriveEncoders(0.5, 12, 0));
     		addSequential(new GearMechOut());
     		addSequential(new GearHold());

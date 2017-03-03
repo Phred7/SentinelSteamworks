@@ -18,7 +18,7 @@ public class GearMechIn extends Command {
     }
 
     protected void execute() {
-    	Robot.gearMech.pistonsIn();
+    	Robot.gearMech.GearMechIn();
     }
 
     protected boolean isFinished() {

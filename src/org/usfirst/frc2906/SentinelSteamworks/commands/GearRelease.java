@@ -18,7 +18,7 @@ public class GearRelease extends Command {
     }
 
     protected void execute() {
-    	Robot.gearMech.release();
+    	Robot.gearMech.GearRelease();
     }
 
     protected boolean isFinished() {
