@@ -20,10 +20,10 @@ public class DriveEncoders extends Command {
 
     	requires(Robot.driveTrain);
     	
-    	driveDistance = userInches + (12 * userFeet);
+    	driveDistance = (userInches + (12 * userFeet));
     	botSpeed = speed;
-    	rightSpeed = botSpeed*-1;
-    	leftSpeed = botSpeed;
+    	leftSpeed = botSpeed*-1.1;
+    	rightSpeed = botSpeed;
     }
 
     protected void initialize() {

@@ -1,35 +1,18 @@
 package org.usfirst.frc2906.SentinelSteamworks.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class AutoTestDriveOnly extends CommandGroup {
+public class AutoTime extends CommandGroup {
 
-    public AutoTestDriveOnly() {
+    public AutoTime() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	
-    	// addSequential(new DriveEncoders(.4, 2, 6));
-    	 //addSequential(new GearRelease());
-    	 addSequential(new DriveTurnEncodersRight(.75, 0, 14));
-    	 //addSequential(new GearRelease());
-    	 addSequential(new WaitCommand(1.5));
-    	 addSequential(new DriveTurnEncodersLeft(.75, 0, 14));
-    	 //addSequential(new GearHold());
-    	 
-    	 //addSequential(new DriveTurnEncodersLeft(.3, 45));
-    	// addSequential(new DriveEncoders(.5, 2, 2));
-    	/*
-    	addSequential(new LiftUp());
-    	addSequential(new WaitCommand(.2));
-    	addParallel(new LiftStop());
-    	addSequential(new GearRelease());
-    	*/
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

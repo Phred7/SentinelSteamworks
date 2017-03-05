@@ -43,7 +43,7 @@ public class RobotMap {
     public static DoubleSolenoid GearDoublePiston;
     public static final double sensitivity = 0.1;
     
-    public static double tinch = 76.43;
+    public static double tinch = 13.79;
 
     public static void init() {
 
@@ -73,10 +73,10 @@ public class RobotMap {
         driveTrainRobotDrive.setMaxOutput(1.0);
         driveTrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         
-        GearDoublePiston = new DoubleSolenoid(0, 0, 1);
+        GearDoublePiston = new DoubleSolenoid(0, 2, 3);
         LiveWindow.addActuator("GearMech", "Double Piston", GearDoublePiston);
         
-        GearSinglePiston = new DoubleSolenoid(0, 2, 3);
+        GearSinglePiston = new DoubleSolenoid(0, 1, 0);
         LiveWindow.addActuator("GearMech", "Single Piston", GearSinglePiston);
         
         

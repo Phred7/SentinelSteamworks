@@ -83,10 +83,10 @@ public class OI {
 		j2b12 = new JoystickButton(joystick2, 12);
 		
 //START JOY 1 COMMANDS		
-		j1b2.whenPressed(new GearHold());
-		j1b3.whenPressed(new GearRelease());
-		j1b4.whenPressed(new GearMechOut());
-		j1b6.whenPressed(new GearMechIn());
+		j1b4.whenPressed(new GearHold());
+		j1b6.whenPressed(new GearRelease());
+		j1b2.whenPressed(new GearMechOut());
+		j1b3.whenPressed(new GearMechIn());
 		
 //START JOY 2 COMMANDS	
 		j2b1.whileHeld(new LiftUp());

@@ -30,10 +30,12 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	Command AutoNone;
+	Command AutoBaseLine;
 	Command AutoGearOnLeft;
 	Command AutoGearOnRight;
 	Command AutoGearStrait;
 	Command AutoTestDriveOnly;
+	Command AutoTime;
 
 	public static OI oi;
 	public static DriveTrain driveTrain;
@@ -50,8 +52,10 @@ public class Robot extends IterativeRobot {
 	final String autoGearOnRight = "GearOnRight";
 	final String autoGearOnStrait = "GearOnAhead";
 	final String autoTestDriveOnly = "Test Drive";
+	final String autoBaseLine = "Base Line";
+	final String autoTime = "Auto Time Base Line";
 
-	String[] autoList = { autoNone, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly };
+	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoTime };
 
 	public static CameraServer cameraServer;
 
@@ -70,6 +74,7 @@ public class Robot extends IterativeRobot {
 
 		auto = new SendableChooser();
 		auto.addDefault("No Auto", new AutoNone());
+		auto.addObject("BaseLine", new AutoBaseLine());
 		auto.addObject("GearOnLeft", new AutoGearOnLeft());
 		auto.addObject("GearOnRight", new AutoGearOnRight());
 		auto.addObject("GearAhead", new AutoGearStrait());
@@ -77,6 +82,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto modes", auto);
 		
 		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
+		SmartDashboard.putData("GearHold", new GearMechIn());
+		SmartDashboard.putData("GearRelease", new GearMechOut());
 	}
 
 	public void disabledInit() {

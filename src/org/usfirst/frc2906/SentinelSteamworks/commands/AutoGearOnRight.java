@@ -13,7 +13,7 @@ public class AutoGearOnRight extends CommandGroup {
     	addParallel(new GearHold());
 		addParallel(new GearMechIn());
 		addSequential(new DriveEncoders(0.8, 12, 0));
-		addSequential(new DriveTurnEncodersLeft(.4, 45));
+		addSequential(new DriveTurnEncodersLeft(.4, 0, 7));
 		addSequential(new DriveEncoders(.8, 1, 6));
 		addSequential(new GearMechOut());
 		addSequential(new GearHold());
@@ -21,7 +21,7 @@ public class AutoGearOnRight extends CommandGroup {
 		addParallel(new GearHold());
 		addParallel(new GearMechIn());
 		//addSequential(new WaitCommand(.15));
-		addSequential(new DriveTurnEncodersRight(.4, 45));
+		addSequential(new DriveTurnEncodersRight(.4, 0, 7));
 		addSequential(new DriveEncoders(.8, 2, 6));
 		addSequential(new DriveStop());
         
