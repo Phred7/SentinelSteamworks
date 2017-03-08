@@ -79,6 +79,7 @@ public class Robot extends IterativeRobot {
 		auto.addObject("GearOnRight", new AutoGearOnRight());
 		auto.addObject("GearAhead", new AutoGearStrait());
 		auto.addObject("Test Drive Only", new AutoTestDriveOnly());
+		auto.addObject("Auto Time Base Line", new AutoTime());
 		SmartDashboard.putData("Auto modes", auto);
 		
 		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());

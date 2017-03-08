@@ -14,7 +14,7 @@ public class DriveTank extends Command {
     public DriveTank(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	leftSpeed = speed*-1;
+    	leftSpeed = speed*-1.085;
     	rightSpeed = speed;
     	requires(Robot.driveTrain);
     }
