@@ -16,9 +16,11 @@ public class AutoGearStrait extends CommandGroup {
     		//addSequential(new GearMechIn());
     		//addSequential(new DriveEncoders(1.0, 12, 0));
     		//addParallel(new GearMechOut());
-    		//addParallel(new GearHold());
-    		addSequential(new DriveEncoders(.5, 7, 9));
+    		addSequential(new GearHold());
+    		addSequential(new DriveEncoders(.8, 7, 9));
     		addSequential(new GearRelease());
+    		addSequential(new DriveEncodersReverse(-.5, 1, 6));
+    		addSequential(new GearHold());
     		//addSequential(new GearMechOut());
     		
     		/*
