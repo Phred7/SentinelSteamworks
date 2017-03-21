@@ -28,7 +28,7 @@ public class RobotMap {
 	public static SpeedController liftMotor;
     public static SpeedController driveTrainLeft;
     public static SpeedController driveTrainRight;
-    public static SpeedController ExtraController1;
+    public static SpeedController ballShooter;
     public static SpeedController ExtraController2;
     public static SpeedController ExtraController3;
     public static SpeedController ballPickupPickup;
@@ -44,6 +44,8 @@ public class RobotMap {
     public static final double sensitivity = 0.1;
     
     public static double tinch = 13.79;
+    //for Karla aka Pheonix: 13.79
+    //number must be correct or will recieve incorect distances
 
     public static void init() {
 
@@ -55,7 +57,7 @@ public class RobotMap {
         
         ExtraController2 = new Spark(2);
         
-        ExtraController1 = new Spark(3);
+        ballShooter = new Spark(3);
         
         liftMotor = new Spark(4);
         LiveWindow.addActuator("LiftMotor", "Lift", (Spark) liftMotor);

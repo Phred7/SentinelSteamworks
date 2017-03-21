@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -36,6 +37,9 @@ public class Robot extends IterativeRobot {
 	Command AutoGearStrait;
 	Command AutoTestDriveOnly;
 	Command AutoTime;
+	Command AutoShootOnly;
+	Command AutoGearStraitWithShootBlue;
+	Command AutoGearStraitWithShootRed;
 
 	public static OI oi;
 	public static DriveTrain driveTrain;
@@ -44,6 +48,7 @@ public class Robot extends IterativeRobot {
 	public static Lift lift;
 	public static Encoder leftDrive;
 	public static Encoder rightDrive;
+	public static BallShooter shooter;
 
 	SendableChooser<Command> auto = new SendableChooser<>();
 
@@ -54,10 +59,14 @@ public class Robot extends IterativeRobot {
 	final String autoTestDriveOnly = "Test Drive";
 	final String autoBaseLine = "Base Line";
 	final String autoTime = "Auto Time Base Line";
+	final String autoShootOnly = "Auto Shoot 10 Balls";
+	final String autoGearStraitWithShootBlue = "blue side shooting with gear ahead";
+	final String autoGearStraitWithShootRed = "red side shooting with gear ahead";
 
-	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoTime };
+	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoShootOnly, autoGearStraitWithShootBlue, autoGearStraitWithShootRed, autoTime };
 
 	public static CameraServer cameraServer;
+	
 
 	public void robotInit() {
 		RobotMap.init();
@@ -80,6 +89,9 @@ public class Robot extends IterativeRobot {
 		auto.addObject("GearAhead", new AutoGearStrait());
 		auto.addObject("Test Drive Only", new AutoTestDriveOnly());
 		auto.addObject("Auto Time Base Line", new AutoTime());
+		auto.addObject("Shooter Only", new AutoBallShootOnly());
+		auto.addObject("AutoGearStraitBlueShoot", new AutoGearStraitWithShootBlue());
+		auto.addObject("AutoGearStraitRedShoot", new AutoGearStraitWithShootRed());
 		SmartDashboard.putData("Auto modes", auto);
 		
 		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
