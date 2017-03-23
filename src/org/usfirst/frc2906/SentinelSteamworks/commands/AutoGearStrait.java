@@ -11,11 +11,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class AutoGearStrait extends CommandGroup {
 
     public AutoGearStrait() {
-
-    		
-    		//addSequential(new GearMechIn());
-    		//addSequential(new DriveEncoders(1.0, 12, 0));
-    		//addParallel(new GearMechOut());
+    	
     		addSequential(new GearHold());
     		addSequential(new DriveEncoders(.6, 7, 9));
     		addSequential(new WaitCommand(1.0));
@@ -26,17 +22,8 @@ public class AutoGearStrait extends CommandGroup {
     		addSequential(new GearHold());
     		addSequential(new GearMechIn());
     		addSequential(new GearMechOut());
-    		//addSequential(new GearMechOut());
     		
-    		/*
-    		addSequential(new DriveEncoders(-.15, -2, -6));
-    		addParallel(new GearHold());
-    		addParallel(new GearMechIn());
-    		addSequential(new DriveTurnEncodersLeft(.5, 90));
-    		addSequential(new DriveEncoders(.5, 5, 9));
-    		addSequential(new DriveTurnEncodersRight(.4, 90));
-    		addSequential(new DriveEncoders(.5, 3, 6));
-    		addSequential(new DriveStop());
-    		*/
+    		//speeds may need to be adjusted since left speed is greater than right speed
+
     }
 }

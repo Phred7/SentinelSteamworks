@@ -95,6 +95,11 @@ public class OI {
 			j2b3.whenReleased(new BallPickUpOff());
 		j2b4.whileHeld(new BallPickUpOuttt());
 			j2b4.whenReleased(new BallPickUpOff());
+		j2b7.whileHeld(new Shoot());
+			j2b7.whenReleased(new ShootStop());
+		j2b8.whileHeld(new ShootReverse());
+			j2b8.whenReleased(new ShootStop());
+		
 	
 	}
 
