@@ -22,5 +22,6 @@ public class AutoGearStraitWithShootBlue extends CommandGroup {
 		addSequential(new DriveEncoders(.8, 10, 0));
 		addSequential(new Shoot());
 		addSequential(new WaitCommand(5));
+		//did no add stop for shooter to let it run until auto ends
     }
 }
