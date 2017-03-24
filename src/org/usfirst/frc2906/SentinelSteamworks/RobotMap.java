@@ -50,21 +50,21 @@ public class RobotMap {
     public static void init() {
 
         driveTrainLeft = new Spark(0);
-        LiveWindow.addActuator("DriveTrain", "Left", (Spark) driveTrainLeft);
+        //LiveWindow.addActuator("DriveTrain", "Left", (Spark) driveTrainLeft);
         
         driveTrainRight = new Spark(1);
-        LiveWindow.addActuator("DriveTrain", "Right", (Spark) driveTrainRight);
+        //LiveWindow.addActuator("DriveTrain", "Right", (Spark) driveTrainRight);
         
         ExtraController2 = new Spark(2);
         
         ballShooter = new Spark(3);
         
         liftMotor = new Spark(4);
-        LiveWindow.addActuator("LiftMotor", "Lift", (Spark) liftMotor);
+        //LiveWindow.addActuator("LiftMotor", "Lift", (Spark) liftMotor);
         
         
         ballPickupPickup = new Spark(8);
-        LiveWindow.addActuator("BallPickup", "Pickup", (Spark) ballPickupPickup);
+        //LiveWindow.addActuator("BallPickup", "Pickup", (Spark) ballPickupPickup);
         
         ExtraController3 = new Spark(9);
 
@@ -76,10 +76,10 @@ public class RobotMap {
         driveTrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         
         GearDoublePiston = new DoubleSolenoid(0, 2, 3);
-        LiveWindow.addActuator("GearMech", "Double Piston", GearDoublePiston);
+        //LiveWindow.addActuator("GearMech", "Double Piston", GearDoublePiston);
         
         GearSinglePiston = new DoubleSolenoid(0, 1, 0);
-        LiveWindow.addActuator("GearMech", "Single Piston", GearSinglePiston);
+        //LiveWindow.addActuator("GearMech", "Single Piston", GearSinglePiston);
         
         
         encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
