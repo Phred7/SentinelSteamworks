@@ -45,32 +45,7 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks() {
 		robotDrive.arcadeDrive(Robot.oi.getJoystick1X(), Robot.oi.getJoystick1Y());
 	}
-/*
-	public void driveStraightEncs(double speed, int userFeet, int userInches) {
-		int calculatedTicks = (userFeet * tift) + (userInches * tinch);
-		while (Robot.leftDrive.get() <= Math.abs(calculatedTicks)) {
-			Robot.driveTrain.tankDrive(speed, speed);
-		}
-	}
 
-	public void turnLeftEncs(int degrees) {
-		int calculatedTicks = (degrees*(tpd/2));
-		while(Robot.rightDrive.get() <= Math.abs(calculatedTicks)) {
-			Robot.driveTrain.tankDrive(-.4, .4);
-		}
-	}
-
-	public void turnRightEnc(int degrees) {
-		int calculatedTicks = (degrees*(tpd/2));
-		while(Robot.leftDrive.get() <= Math.abs(calculatedTicks)) {
-			Robot.driveTrain.tankDrive(.4, -.4);
-		}
-	}
-
-	public void turnFullEncs(int degrees) {
-
-	}
-	*/
 	public void ResetEncoders(){
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
@@ -81,3 +56,30 @@ public class DriveTrain extends Subsystem {
 		robotDrive.tankDrive(0.0, 0.0);
 	}
 }
+
+/*
+public void driveStraightEncs(double speed, int userFeet, int userInches) {
+	int calculatedTicks = (userFeet * tift) + (userInches * tinch);
+	while (Robot.leftDrive.get() <= Math.abs(calculatedTicks)) {
+		Robot.driveTrain.tankDrive(speed, speed);
+	}
+}
+
+public void turnLeftEncs(int degrees) {
+	int calculatedTicks = (degrees*(tpd/2));
+	while(Robot.rightDrive.get() <= Math.abs(calculatedTicks)) {
+		Robot.driveTrain.tankDrive(-.4, .4);
+	}
+}
+
+public void turnRightEnc(int degrees) {
+	int calculatedTicks = (degrees*(tpd/2));
+	while(Robot.leftDrive.get() <= Math.abs(calculatedTicks)) {
+		Robot.driveTrain.tankDrive(.4, -.4);
+	}
+}
+
+public void turnFullEncs(int degrees) {
+
+}
+*/
