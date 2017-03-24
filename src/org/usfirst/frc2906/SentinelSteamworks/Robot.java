@@ -94,8 +94,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto modes", auto);
 		
 		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
-		SmartDashboard.putData("GearHold", new GearMechIn());
-		SmartDashboard.putData("GearRelease", new GearMechOut());
+		SmartDashboard.putData("Test GearHold", new GearMechIn());
+		SmartDashboard.putData("Test GearRelease", new GearMechOut());
 	}
 
 	public void disabledInit() {
@@ -108,7 +108,7 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		autonomousCommand = (Command) auto.getSelected();
-	    System.out.println("Auto selected: " + auto.getSelected());
+	    SmartDashboard.getData("Auto selected: " + auto.getSelected());
 	   
 
 		Robot.driveTrain.ResetEncoders();
