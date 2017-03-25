@@ -23,9 +23,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2906.SentinelSteamworks.commands.*;
 import org.usfirst.frc2906.SentinelSteamworks.subsystems.*;
 
-/**
-
- */
 public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
@@ -62,10 +59,10 @@ public class Robot extends IterativeRobot {
 	final String autoGearStraitWithShootBlue = "blue side shooting with gear ahead";
 	final String autoGearStraitWithShootRed = "red side shooting with gear ahead";
 
-	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoShootOnly, autoGearStraitWithShootBlue, autoGearStraitWithShootRed, autoTime };
+	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly,
+			autoShootOnly, autoGearStraitWithShootBlue, autoGearStraitWithShootRed, autoTime };
 
 	public static CameraServer cameraServer;
-	
 
 	public void robotInit() {
 		RobotMap.init();
@@ -74,11 +71,10 @@ public class Robot extends IterativeRobot {
 		gearMech = new GearMech();
 		ballPickup = new BallPickup();
 		lift = new Lift();
-
+		oi = new OI();
+		
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");
 		table.putStringArray("Auto List", autoList);
-
-		oi = new OI();
 
 		auto = new SendableChooser();
 		auto.addDefault("No Auto", new AutoNone());
@@ -91,8 +87,8 @@ public class Robot extends IterativeRobot {
 		auto.addObject("Shooter Only", new AutoBallShootOnly());
 		auto.addObject("AutoGearStraitBlueShoot", new AutoGearStraitWithShootBlue());
 		auto.addObject("AutoGearStraitRedShoot", new AutoGearStraitWithShootRed());
-		SmartDashboard.putData("Auto modes", auto);
 		
+		SmartDashboard.putData("Auto modes", auto);
 		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
 		SmartDashboard.putData("Test GearHold", new GearMechIn());
 		SmartDashboard.putData("Test GearRelease", new GearMechOut());
@@ -108,8 +104,7 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		autonomousCommand = (Command) auto.getSelected();
-	    SmartDashboard.getData("Auto selected: " + auto.getSelected());
-	   
+		SmartDashboard.getData("Auto selected: " + auto.getSelected());
 
 		Robot.driveTrain.ResetEncoders();
 
@@ -119,10 +114,10 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
-		
+
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
-        SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));
+		SmartDashboard.putNumber("encoder value left", (RobotMap.encoderLeft.get()));
 
 	}
 
@@ -135,7 +130,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
-        SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));
+		SmartDashboard.putNumber("encoder value left", (RobotMap.encoderLeft.get()));
 	}
 
 	public void testPeriodic() {

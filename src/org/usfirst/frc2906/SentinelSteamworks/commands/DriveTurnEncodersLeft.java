@@ -5,9 +5,6 @@ import org.usfirst.frc2906.SentinelSteamworks.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class DriveTurnEncodersLeft extends Command {
 	int ftDistance;
 	int inDistance;
