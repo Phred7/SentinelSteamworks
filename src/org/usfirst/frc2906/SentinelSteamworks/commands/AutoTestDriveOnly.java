@@ -8,38 +8,33 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  */
 public class AutoTestDriveOnly extends CommandGroup {
 
-    public AutoTestDriveOnly() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-    	
-    	// addSequential(new DriveEncoders(.4, 2, 6));
-    	 //addSequential(new GearRelease());
-    	 addSequential(new DriveTurnEncodersRight(.75, 0, 14));
-    	 //addSequential(new GearRelease());
-    	 addSequential(new WaitCommand(1.5));
-    	 addSequential(new DriveTurnEncodersLeft(.75, 0, 14));
-    	 //addSequential(new GearHold());
-    	 
-    	 //addSequential(new DriveTurnEncodersLeft(.3, 45));
-    	// addSequential(new DriveEncoders(.5, 2, 2));
-    	/*
-    	addSequential(new LiftUp());
-    	addSequential(new WaitCommand(.2));
-    	addParallel(new LiftStop());
-    	addSequential(new GearRelease());
-    	*/
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
+	public AutoTestDriveOnly() {
 
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
+		/*
+    	 addSequential(new DriveTurnEncodersRight(.75, 0, 14));
+    	 addSequential(new GearRelease());
+    	 addSequential(new WaitCommand(3));
+    	 addSequential(new DriveTurnEncodersLeft(.75, 0, 14));
+    	 */
+    	 
+    	 /*should drive 10ft, turn 260degrees left, then backup 4ft, drive 4ft forward turn 90degrees right,
+    	   then drive 10ft; should return to starting position*/
+		 addSequential(new GearHold());
+    	 addSequential(new WaitCommand(3));
+    	 addSequential(new DriveEncoders(.5, 10, 0)); //10ft forward
+    	 addSequential(new WaitCommand(.25));
+    	 addSequential(new DriveTurnEncodersLeftExperimental(.5, 260)); //260degrees left
+    	 addSequential(new WaitCommand(.25));
+    	 addSequential(new DriveEncodersReverse(.9, 4, 0)); //4ft reverse
+    	 addSequential(new WaitCommand(.25));
+    	 addSequential(new DriveEncoders(.9, 4, 0));
+    	 addSequential(new WaitCommand(.25));
+    	 addSequential(new DriveTurnEncodersRightExperimental(.5, 90)); //90degees right
+    	 addSequential(new WaitCommand(.25));
+    	 addSequential(new DriveEncoders(.75, 8, 0));
+    	 addSequential(new DriveEncoders(.5, 2, 0));
+    	 addSequential(new WaitCommand(.25));
+    	 addSequential(new GearRelease());
+    	 
     }
 }

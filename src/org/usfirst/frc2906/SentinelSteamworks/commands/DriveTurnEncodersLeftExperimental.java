@@ -1,0 +1,57 @@
+package org.usfirst.frc2906.SentinelSteamworks.commands;
+
+import org.usfirst.frc2906.SentinelSteamworks.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ *
+ */
+public class DriveTurnEncodersLeftExperimental extends Command {
+	
+	double botSpeed;
+	double botTurnCircumference;
+	double leftSpeed;
+	double rightSpeed;
+	double userDegrees;
+	double endDistance;
+	double driveDistance;
+	double botTurnRadius;
+	double totalDegrees; //factor, number of degrees in a circle
+	double distancePerDegree; //assumed to be in inches only
+	double pivotDriveDistance;
+
+    public DriveTurnEncodersLeftExperimental(double speed, double userDegrees) {
+    	
+        requires(Robot.driveTrain);
+        botSpeed = speed;
+        botTurnRadius = 18;
+        totalDegrees = 360.0;
+        leftSpeed = botSpeed*-1;
+    	rightSpeed = botSpeed*-1;
+        botTurnCircumference = ((botTurnRadius)*(2.0)*(Math.PI));
+        distancePerDegree = (((botTurnCircumference))/(totalDegrees));
+        pivotDriveDistance = ((distancePerDegree)*(userDegrees));
+        
+    }
+
+    protected void initialize() {
+    	endDistance = Robot.driveTrain.getRightDistance() - pivotDriveDistance;
+    }
+
+    protected void execute() {
+    	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
+    	
+    }
+
+    protected boolean isFinished() {
+        return (Robot.driveTrain.getRightDistance() >= endDistance); //MAY NEED TO ADD ABS TO FUNCTION PROPPERLY TESTING IS REQUIRED
+    }
+
+    protected void end() {
+    	Robot.driveTrain.stop();
+    }
+
+    protected void interrupted() {
+    }
+}
