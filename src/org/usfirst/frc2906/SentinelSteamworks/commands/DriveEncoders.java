@@ -23,7 +23,7 @@ public class DriveEncoders extends Command {
     	driveDistance = (userInches + (12 * userFeet));
     	botSpeed = speed;
     	leftSpeed = botSpeed*-1.1;
-    	rightSpeed = botSpeed;
+    	rightSpeed = botSpeed*1.0;
     }
 
     protected void initialize() {

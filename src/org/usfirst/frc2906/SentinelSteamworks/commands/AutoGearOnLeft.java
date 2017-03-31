@@ -11,7 +11,7 @@ public class AutoGearOnLeft extends CommandGroup {
     public AutoGearOnLeft() {
     	
     	//addSequential(new DriveTurnEncodersLeft(0.5, 0, 7));
-    
+    /*
     	addSequential(new GearHold());
 		addSequential(new DriveEncoders(.7, 7, 9));
 		addSequential(new WaitCommand(.5));
@@ -22,7 +22,8 @@ public class AutoGearOnLeft extends CommandGroup {
 		addSequential(new GearHold());
 		addSequential(new GearMechIn());
 		addSequential(new GearMechOut());
-    	
+    	*/
+    	addSequential(new DriveTurnEncodersLeftExperimental(.7, 360));
     	/*
     	addSequential(new GearHold());
     	addSequential(new GearMechIn());
