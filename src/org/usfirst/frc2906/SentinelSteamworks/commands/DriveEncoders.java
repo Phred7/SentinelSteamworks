@@ -19,6 +19,7 @@ public class DriveEncoders extends Command {
     public DriveEncoders(double speed, int userFeet, int userInches) {
 
     	requires(Robot.driveTrain);
+    	requires(Robot.ballPickup);
     	
     	driveDistance = (userInches + (12 * userFeet));
     	botSpeed = speed;
@@ -32,6 +33,7 @@ public class DriveEncoders extends Command {
 
     protected void execute() {
     	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
+    	Robot.ballPickup.drive(rightSpeed);
     }
 
     protected boolean isFinished() {
@@ -40,6 +42,8 @@ public class DriveEncoders extends Command {
 
     protected void end() {
     	Robot.driveTrain.stop();
+    	Robot.ballPickup.stop();
+    	
     }
 
     protected void interrupted() {

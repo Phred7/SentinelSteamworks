@@ -19,6 +19,7 @@ public class DriveEncodersReverse extends Command {
     public DriveEncodersReverse(double speed, int userFeet, int userInches) {
 
     	requires(Robot.driveTrain);
+    	requires(Robot.ballPickup);
     	
     	driveDistance = (userInches + (12 * userFeet));
     	botSpeed = speed;

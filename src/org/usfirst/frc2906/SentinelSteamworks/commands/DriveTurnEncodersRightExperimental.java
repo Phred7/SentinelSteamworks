@@ -24,6 +24,8 @@ public class DriveTurnEncodersRightExperimental extends Command {
     public DriveTurnEncodersRightExperimental(double speed, double userDegrees) {
     	
         requires(Robot.driveTrain);
+        requires(Robot.ballPickup);
+        
         botSpeed = speed;
         botTurnRadius = 18;
         totalDegrees = 360.0;
@@ -41,6 +43,7 @@ public class DriveTurnEncodersRightExperimental extends Command {
 
     protected void execute() {
     	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
+    	Robot.ballPickup.drive(rightSpeed);
     	
     }
 
@@ -49,6 +52,7 @@ public class DriveTurnEncodersRightExperimental extends Command {
     }
 
     protected void end() {
+    	Robot.driveTrain.stop();
     	Robot.driveTrain.stop();
     }
 

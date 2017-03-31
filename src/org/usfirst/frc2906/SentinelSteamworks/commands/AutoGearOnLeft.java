@@ -23,7 +23,7 @@ public class AutoGearOnLeft extends CommandGroup {
 		addSequential(new GearMechIn());
 		addSequential(new GearMechOut());
     	*/
-    	addSequential(new DriveTurnEncodersLeftExperimental(.7, 360));
+    	addSequential(new DriveTurnEncodersLeftExperimental(.7, 320));
     	/*
     	addSequential(new GearHold());
     	addSequential(new GearMechIn());

@@ -19,21 +19,14 @@ public class BallPickup extends Subsystem {
 
     public void initDefaultCommand() {
     
-    }
-
-    //This pushes the ball out speed of 100%.
-    public void BallPickUpOut() {
-    	pickup.set(-1.0);
-    	
-    }
-    //motor off.
-    public void BallPickUpOff() {
-    	pickup.set(0);
-    
-    }
-    
-    public void BallPickUpIn() {
-    	pickup.set(.5);
-    }
+	}
+	
+	public void drive(double speed){
+		pickup.set(speed);
+	}
+	
+	public void stop(){
+		pickup.set(0.0);
+	}
 }
 

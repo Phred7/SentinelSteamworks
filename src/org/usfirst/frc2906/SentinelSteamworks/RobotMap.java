@@ -37,14 +37,14 @@ public class RobotMap {
     public static Solenoid liftSolenoid1;
     public static RobotDrive driveTrainRobotDrive;
     public static Compressor compressor;
-    //public static CameraServer camera1;
-    //public static CameraServer camera2;
+    public static CameraServer camera1;
+    public static CameraServer camera2;
     public static DoubleSolenoid GearSinglePiston;
     public static DoubleSolenoid GearDoublePiston;
     public static final double sensitivity = 0.1;
     
-    public static double tinch = 14.8943;
-    //15.14545 or 14.8943 for *" pnuematic?
+    public static double tinch = 13.79;
+    //14.8943 for 8" pnuematic?
   //for Karla aka Pheonix: 13.79
     //number must be correct or will receive incorrect distances
 
@@ -93,12 +93,12 @@ public class RobotMap {
         encoderLeft.setPIDSourceType(PIDSourceType.kDisplacement);
         encoderLeft.setDistancePerPulse(1.0 / tinch);
         encoderLeft.reset();
-        /*
+        
         CameraServer server1 = CameraServer.getInstance();
         CameraServer server2 = CameraServer.getInstance();
         server1.startAutomaticCapture();
         server2.startAutomaticCapture();
-        */
+        
         compressor  = new Compressor(0);
         
 
