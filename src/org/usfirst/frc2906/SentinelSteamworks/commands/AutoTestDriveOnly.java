@@ -20,21 +20,20 @@ public class AutoTestDriveOnly extends CommandGroup {
     	 /*should drive 10ft, turn 260degrees left, then backup 4ft, drive 4ft forward turn 90degrees right,
     	   then drive 10ft; should return to starting position*/
 		 addSequential(new GearHold());
-    	 addSequential(new WaitCommand(3));
-    	 addSequential(new DriveEncoders(.5, 10, 0)); //10ft forward
+    	 addSequential(new WaitCommand(1.5));
+    	 addSequential(new DriveEncoders(.65, 10, 0)); //10ft forward
     	 addSequential(new WaitCommand(.25));
-    	 addSequential(new DriveTurnEncodersLeftExperimental(.5, 260)); //260degrees left
+    	 addSequential(new DriveTurnEncodersRightExperimental(.6, 260)); //260degrees left
     	 addSequential(new WaitCommand(.25));
-    	 addSequential(new DriveEncodersReverse(.9, 4, 0)); //4ft reverse
+    	 addSequential(new DriveEncodersReverse(.75, 4, 0)); //4ft reverse
     	 addSequential(new WaitCommand(.25));
     	 addSequential(new DriveEncoders(.9, 4, 0));
     	 addSequential(new WaitCommand(.25));
-    	 addSequential(new DriveTurnEncodersRightExperimental(.5, 90)); //90degees right
+    	 addSequential(new DriveTurnEncodersLeftExperimental(.6, 90)); //90degees right
     	 addSequential(new WaitCommand(.25));
     	 addSequential(new DriveEncoders(.75, 8, 0));
-    	 addSequential(new DriveEncoders(.5, 2, 0));
+    	 addSequential(new DriveEncoders(.6, 2, 0));
     	 addSequential(new WaitCommand(.25));
     	 addSequential(new GearRelease());
-    	 
     }
 }

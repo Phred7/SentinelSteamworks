@@ -10,7 +10,7 @@ public class AutoBaseLine extends CommandGroup {
     public AutoBaseLine() {
 
 
-		addSequential(new DriveEncoders(0.9, 8, 6));
+		addSequential(new DriveEncoders(0.5, 8, 6));
 
     }
 }

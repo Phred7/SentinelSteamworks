@@ -22,8 +22,8 @@ public class DriveEncodersReverse extends Command {
     	
     	driveDistance = (userInches + (12 * userFeet));
     	botSpeed = speed;
-    	leftSpeed = botSpeed*-1.1;
-    	rightSpeed = botSpeed;
+    	leftSpeed = botSpeed*1;
+    	rightSpeed = botSpeed*-1;
     }
 
     protected void initialize() {

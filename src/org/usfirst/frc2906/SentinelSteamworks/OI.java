@@ -19,6 +19,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc2906.SentinelSteamworks.subsystems.*;
 import org.usfirst.frc2906.SentinelSteamworks.RobotMap;
 
+/**
+
+ */
 public class OI {
 
 	public Joystick joystick1;
@@ -48,11 +51,12 @@ public class OI {
 	public JoystickButton j2b11;
 	public JoystickButton j2b12;
 
+
 	public OI() {
 
 		joystick2 = new Joystick(1);
 		joystick1 = new Joystick(0);
-
+		
 		j1b1 = new JoystickButton(joystick1, 1);
 		j1b2 = new JoystickButton(joystick1, 2);
 		j1b3 = new JoystickButton(joystick1, 3);
@@ -77,26 +81,23 @@ public class OI {
 		j2b10 = new JoystickButton(joystick2, 10);
 		j2b11 = new JoystickButton(joystick2, 11);
 		j2b12 = new JoystickButton(joystick2, 12);
-
-		// START JOY 1 COMMANDS
+		
+//START JOY 1 COMMANDS		
 		j1b4.whenPressed(new GearHold());
 		j1b6.whenPressed(new GearRelease());
 		j1b2.whenPressed(new GearMechOut());
 		j1b3.whenPressed(new GearMechIn());
-
-		// START JOY 2 COMMANDS
+		
+//START JOY 2 COMMANDS	
 		j2b1.whileHeld(new LiftUp());
-		j2b1.whenReleased(new LiftStop());
+			j2b1.whenReleased(new LiftStop());
 		j2b3.whileHeld(new BallPickUpInnn());
-		j2b3.whenReleased(new BallPickUpOff());
+			j2b3.whenReleased(new BallPickUpOff());
 		j2b4.whileHeld(new BallPickUpOuttt());
-		j2b4.whenReleased(new BallPickUpOff());
-		j2b7.whileHeld(new Shoot());
-		j2b7.whenReleased(new ShootStop());
-		j2b8.whileHeld(new ShootReverse());
-		j2b8.whenReleased(new ShootStop());
-
+			j2b4.whenReleased(new BallPickUpOff());
+	
 	}
+
 
 	public Joystick getJoystick1() {
 		return joystick1;
@@ -118,7 +119,7 @@ public class OI {
 		}
 	}
 
-	public Joystick getJoystick2() {
-		return joystick2;
-	}
+	public Joystick getJoystick2(){
+    	return joystick2;
+    	}
 }
