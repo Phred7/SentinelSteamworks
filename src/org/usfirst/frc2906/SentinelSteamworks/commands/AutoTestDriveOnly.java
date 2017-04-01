@@ -39,8 +39,10 @@ public class AutoTestDriveOnly extends CommandGroup {
     	 addSequential(new DriveEncoders(.7, 2, 0));
     	 addSequential(new DriveEncodersReverse(.75, 0, 2));
     	 */
+		
     	 addSequential(new WaitCommand(1.5));
-    	 addSequential(new DriveEncoders(.7, 10, 0)); //10ft forward
+    	 addSequential(new DriveEncoders(.7, 5, 0)); //10ft forward
+    	 /*
     	 addSequential(new DriveEncodersReverse(.75, 0, 2));
     	 addSequential(new WaitCommand(.25));
     	 addSequential(new DriveTurnEncodersRightExperimental(.7, 270)); //260degrees left
@@ -56,6 +58,7 @@ public class AutoTestDriveOnly extends CommandGroup {
     	 addSequential(new DriveEncoders(.85, 8, 0));
     	 addSequential(new DriveEncoders(.7, 2, 0));
     	 addSequential(new DriveEncodersReverse(.75, 0, 2));
+    	 */
     	 //addSequential(new WaitCommand(.25));
     	 //addSequential(new GearRelease());
     }

@@ -12,19 +12,18 @@ public class AutoGearStrait extends CommandGroup {
 
     public AutoGearStrait() {
     	
-    	addSequential(new GearHold());
-		addSequential(new DriveEncoders(.8, 6, 0));
-		addSequential(new DriveEncoders(.65, 1, 9));
+    	addSequential(new GearMechIn());
+		addSequential(new DriveEncoders(.75, 6, 6));
+		addSequential(new DriveEncoders(.5, 2, 7));
+		addSequential(new DriveEncodersReverse(.5, 0, 1));
 		addSequential(new WaitCommand(.5));
-		addSequential(new GearRelease());
+		addSequential(new GearMechOut());
 		addSequential(new WaitCommand(.25));
-		addSequential(new DriveEncodersReverse(.65, 1, 6));
-		addSequential(new WaitCommand(1.5));
-		addParallel(new GearHold());
-		addParallel(new GearMechIn());
+		addSequential(new DriveEncodersReverse(.65, 1, 2));
 		addSequential(new WaitCommand(.5));
-		addParallel(new GearMechOut());
-		addParallel(new GearRelease());
+		addSequential(new GearMechIn());
+		addSequential(new WaitCommand(.25));
+		addSequential(new DriveTurnEncodersLeftExperimental(.7, 90));
     		
     		//speeds may need to be adjusted since left speed is greater than right speed
 

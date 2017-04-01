@@ -9,8 +9,8 @@ public class AutoBaseLine extends CommandGroup {
 
     public AutoBaseLine() {
 
-
-		addParallel(new DriveEncoders(0.5, 8, 6));
+    	addSequential(new GearMechIn());
+		addSequential(new DriveEncoders(0.6, 8, 6));
 
     }
 }

@@ -33,6 +33,7 @@ public class DriveEncodersReverse extends Command {
 
     protected void execute() {
     	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
+    	Robot.ballPickup.drive(rightSpeed);
     }
 
     protected boolean isFinished() {
@@ -41,6 +42,7 @@ public class DriveEncodersReverse extends Command {
 
     protected void end() {
     	Robot.driveTrain.stop();
+    	Robot.ballPickup.stop();
     }
 
     protected void interrupted() {

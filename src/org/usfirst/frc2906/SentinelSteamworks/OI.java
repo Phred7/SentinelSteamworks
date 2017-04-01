@@ -91,10 +91,7 @@ public class OI {
 //START JOY 2 COMMANDS	
 		j2b1.whileHeld(new LiftUp());
 			j2b1.whenReleased(new LiftStop());
-		j2b3.whileHeld(new BallPickUpInnn());
-			j2b3.whenReleased(new BallPickUpOff());
-		j2b4.whileHeld(new BallPickUpOuttt());
-			j2b4.whenReleased(new BallPickUpOff());
+
 	
 	}
 

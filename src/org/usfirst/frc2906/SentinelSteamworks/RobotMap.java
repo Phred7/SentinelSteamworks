@@ -43,9 +43,9 @@ public class RobotMap {
     public static DoubleSolenoid GearDoublePiston;
     public static final double sensitivity = 0.1;
     
-    public static double tinch = 13.79;
+    public static double tinch = 19.6437;
     //14.8943 for 8" pnuematic?
-  //for Karla aka Pheonix: 13.79
+  //for Karla aka Pheonix: 19.744 after modifications 3/31/17
     //number must be correct or will receive incorrect distances
 
 

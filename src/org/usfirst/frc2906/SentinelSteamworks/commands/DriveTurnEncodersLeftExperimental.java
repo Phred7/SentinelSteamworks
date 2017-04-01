@@ -38,7 +38,7 @@ public class DriveTurnEncodersLeftExperimental extends Command {
 	}
 
 	protected void initialize() {
-		endDistance = Robot.driveTrain.getRightDistance() - pivotDriveDistance;
+		endDistance = Robot.driveTrain.getRightDistance() + pivotDriveDistance;
 	}
 
 	protected void execute() {
@@ -48,7 +48,7 @@ public class DriveTurnEncodersLeftExperimental extends Command {
 	}
 
 	protected boolean isFinished() {
-		return (Robot.driveTrain.getRightDistance() <= endDistance); 
+		return (Robot.driveTrain.getRightDistance() >= endDistance); 
 	}
 
 	protected void end() {
