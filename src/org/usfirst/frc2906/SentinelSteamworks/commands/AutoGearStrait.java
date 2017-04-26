@@ -13,12 +13,12 @@ public class AutoGearStrait extends CommandGroup {
     public AutoGearStrait() {
     	
     	addSequential(new GearMechIn());
-		addSequential(new DriveEncoders(.75, 6, 6));
+		addSequential(new DriveEncoders(.75, 4, 5));
 		addSequential(new DriveEncoders(.5, 2, 7));
 		addSequential(new DriveEncodersReverse(.5, 0, 1));
 		addSequential(new WaitCommand(.5));
 		addSequential(new GearMechOut());
-		addSequential(new WaitCommand(.25));
+		addSequential(new WaitCommand(.5));
 		addSequential(new DriveEncodersReverse(.65, 1, 2));
 		addSequential(new WaitCommand(.5));
 		addSequential(new GearMechIn());

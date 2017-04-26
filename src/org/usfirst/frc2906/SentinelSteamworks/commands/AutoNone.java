@@ -9,7 +9,8 @@ public class AutoNone extends CommandGroup {
 
     public AutoNone() {
 
-    	addParallel(new GearRelease());
+    	addSequential(new GearRelease());
+    	addSequential(new GearMechIn());
 		addSequential(new DriveStop());
 
     }

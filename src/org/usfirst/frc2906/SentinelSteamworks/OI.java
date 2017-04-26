@@ -26,6 +26,9 @@ public class OI {
 
 	public Joystick joystick1;
 	public Joystick joystick2;
+	public Joystick joystick3;
+	public Joystick joystick4;
+	public Joystick joystick5;
 	public JoystickButton j1b1;
 	public JoystickButton j1b2;
 	public JoystickButton j1b3;
@@ -51,12 +54,15 @@ public class OI {
 	public JoystickButton j2b11;
 	public JoystickButton j2b12;
 
-
 	public OI() {
 
 		joystick2 = new Joystick(1);
 		joystick1 = new Joystick(0);
+		joystick3 = new Joystick(2);
+		joystick4 = new Joystick(3);
+		joystick5 = new Joystick(4);
 		
+
 		j1b1 = new JoystickButton(joystick1, 1);
 		j1b2 = new JoystickButton(joystick1, 2);
 		j1b3 = new JoystickButton(joystick1, 3);
@@ -81,20 +87,18 @@ public class OI {
 		j2b10 = new JoystickButton(joystick2, 10);
 		j2b11 = new JoystickButton(joystick2, 11);
 		j2b12 = new JoystickButton(joystick2, 12);
-		
-//START JOY 1 COMMANDS		
+
+		// START JOY 1 COMMANDS
 		j1b4.whenPressed(new GearHold());
 		j1b6.whenPressed(new GearRelease());
 		j1b2.whenPressed(new GearMechOut());
 		j1b3.whenPressed(new GearMechIn());
-		
-//START JOY 2 COMMANDS	
+
+		// START JOY 2 COMMANDS
 		j2b1.whileHeld(new LiftUp());
-			j2b1.whenReleased(new LiftStop());
+		j2b1.whenReleased(new LiftStop());
 
-	
 	}
-
 
 	public Joystick getJoystick1() {
 		return joystick1;
@@ -102,7 +106,7 @@ public class OI {
 
 	public double getJoystick1X() {
 		if (Math.abs(joystick1.getX()) > RobotMap.sensitivity) {
-			return -1 * joystick1.getX();
+			return -.6 * joystick1.getX();
 		} else {
 			return 0.0;
 		}
@@ -110,13 +114,42 @@ public class OI {
 
 	public double getJoystick1Y() {
 		if (Math.abs(joystick1.getY()) > RobotMap.sensitivity) {
-			return -1 * joystick1.getY();
+			return -.6 * joystick1.getY();
 		} else {
 			return 0.0;
 		}
 	}
 
-	public Joystick getJoystick2(){
-    	return joystick2;
-    	}
+	public Joystick getJoystick2() {
+		return joystick2;
+	}
+
+	public double getJoystick3Y() {
+		if (Math.abs(joystick3.getY()) > RobotMap.sensitivity) {
+			return 1.0 * joystick3.getY();
+		} else {
+			return 0.0;
+		}
+	}
+	public double getJoystick4Y() {
+		if (Math.abs(joystick4.getY()) > RobotMap.sensitivity) {
+			return -1.0 * joystick4.getY();
+		} else {
+			return 0.0;
+		}
+	}
+	public double getJoystick5Y() {
+		if (Math.abs(joystick5.getY()) > RobotMap.sensitivity) {
+			return 1.0 * joystick5.getY();
+		} else {
+			return 0.0;
+		}
+}
+	public double getJoystick5Z() {
+		if (Math.abs(joystick5.getRawAxis(3)) > RobotMap.sensitivity) {
+			return -1.0 * joystick5.getRawAxis(3);
+		} else {
+			return 0.0;
+		}
+	}
 }
