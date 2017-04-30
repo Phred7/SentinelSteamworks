@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
@@ -73,12 +74,12 @@ public class RobotMap {
         
         extraController5 = new Spark(6);
         LiveWindow.addActuator("ExtraController5", "Extra5", (Spark) extraController5);
-        
-        ballShooter = new Spark(7);
-        LiveWindow.addActuator("BallShooter", "Shooter", (Spark) ballShooter); 
-        
-        ballPickupPickup = new Spark(8);
+
+        ballPickupPickup = new Spark(7);
         LiveWindow.addActuator("BallPickup", "Pickup", (Spark) ballPickupPickup);
+
+        ballShooter = new TalonSRX(8);
+        LiveWindow.addActuator("BallShooter", "Shooter", (TalonSRX) ballShooter); 
         
         extraController3 = new Spark(9);
         LiveWindow.addActuator("ExtraController1", "Extra3", (Spark) extraController3);
