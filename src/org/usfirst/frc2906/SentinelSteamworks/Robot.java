@@ -36,7 +36,11 @@ public class Robot extends IterativeRobot {
 	Command AutoGearStrait;
 	Command AutoTestDriveOnly;
 	Command AutoTime;
+	Command DriveWithJoysticks;
+	Command DriveWithDoubleJoysticks;
+	Command DriveWithXboxTank;
 
+	public static String DriveType;
 	public static OI oi;
 	public static DriveTrain driveTrain;
 	public static GearMech gearMech;
@@ -44,8 +48,10 @@ public class Robot extends IterativeRobot {
 	public static Lift lift;
 	public static Encoder leftDrive;
 	public static Encoder rightDrive;
+	public static BallShooter ballShooter;
 
 	SendableChooser<Command> auto = new SendableChooser<>();
+	SendableChooser<Command> drive = new SendableChooser<>();
 
 	final String autoNone = "No Auto";
 	final String autoGearOnLeft = "GearOnLeft";
@@ -54,8 +60,12 @@ public class Robot extends IterativeRobot {
 	final String autoTestDriveOnly = "Test Drive";
 	final String autoBaseLine = "Base Line";
 	final String autoTime = "Auto Time Base Line";
+	final String driveWithJoysticks = "Drive With Arcadce";
+	final String driveWithDoubleJoysticks = "Drive With Two Joysticks, Tank Drive";
+	final String driveWithXboxTank = "Drive With Xbot Controller Tank Drive";
 
 	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoTime };
+	String[] driveList = { driveWithJoysticks, driveWithDoubleJoysticks, driveWithXboxTank };
 
 	public static CameraServer cameraServer;
 
@@ -65,11 +75,14 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain();
 		gearMech = new GearMech();
 		ballPickup = new BallPickup();
+		ballShooter = new BallShooter();
 		lift = new Lift();
 		oi = new OI();
-
-		NetworkTable table = NetworkTable.getTable("SmartDashboard");
-		table.putStringArray("Auto List", autoList);
+		//DriveType = (Command) drive.getSelected();
+		//DriveType = (String) drive.getSelected();
+		
+		NetworkTable tableAuto = NetworkTable.getTable("SmartDashboard");
+		tableAuto.putStringArray("Auto List", autoList);
 
 		auto = new SendableChooser();
 		auto.addDefault("No Auto", new AutoNone());
@@ -82,6 +95,14 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putData("Auto modes", auto);
 		
+		NetworkTable tableDrive = NetworkTable.getTable("SmartDashboard");
+		tableDrive.putStringArray("Auto List", driveList);
+		
+		drive = new SendableChooser();
+	/*	drive.addDefault(driveWithJoysticks, new DriveWithJoysticks());
+		drive.addObject(driveWithDoubleJoysticks, new DriveWithDoubleJoysticks());
+		drive.addObject(driveWithXboxTank, new DriveWithXboxTank());
+		*/
 		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
 		SmartDashboard.putData("GearHold", new GearMechIn());
 		SmartDashboard.putData("GearRelease", new GearMechOut());
@@ -122,6 +143,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopPeriodic() {
+		
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
         SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));

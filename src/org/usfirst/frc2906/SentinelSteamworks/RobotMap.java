@@ -26,22 +26,24 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 public class RobotMap {
 
 	public static SpeedController liftMotor;
+	public static SpeedController ballShooter;
     public static SpeedController driveTrainLeft;
     public static SpeedController driveTrainRight;
-    public static SpeedController ExtraController1;
-    public static SpeedController ExtraController2;
-    public static SpeedController ExtraController3;
+    public static SpeedController extraController1;
+    public static SpeedController extraController2;
+    public static SpeedController extraController3;
+    public static SpeedController extraController4;
+    public static SpeedController extraController5;
     public static SpeedController ballPickupPickup;
     public static Encoder encoderRight;
     public static Encoder encoderLeft;
-    public static Solenoid liftSolenoid1;
     public static RobotDrive driveTrainRobotDrive;
     public static Compressor compressor;
     public static CameraServer camera1;
     public static CameraServer camera2;
     public static DoubleSolenoid GearSinglePiston;
     public static DoubleSolenoid GearDoublePiston;
-    public static final double sensitivity = 0.1;
+    public static final double sensitivity = 0.1; //arcade drive sensetivity: 0.1
     
     public static double tinch = 19.6437;
     //14.8943 for 8" pnuematic?
@@ -57,18 +59,29 @@ public class RobotMap {
         driveTrainRight = new Spark(1);
         LiveWindow.addActuator("DriveTrain", "Right", (Spark) driveTrainRight);
         
-        ExtraController2 = new Spark(2);
+        extraController1 = new Spark(2);
+        LiveWindow.addActuator("ExtraController1", "Extra1", (Spark) extraController1);
         
-        ExtraController1 = new Spark(3);
+        extraController2 = new Spark(3);
+        LiveWindow.addActuator("ExtraController2", "Extra2", (Spark) extraController2);
         
         liftMotor = new Spark(4);
         LiveWindow.addActuator("LiftMotor", "Lift", (Spark) liftMotor);
         
+        extraController4 = new Spark(5);
+        LiveWindow.addActuator("ExtraController4", "Extra4", (Spark) extraController4);
+        
+        extraController5 = new Spark(6);
+        LiveWindow.addActuator("ExtraController5", "Extra5", (Spark) extraController5);
+        
+        ballShooter = new Spark(7);
+        LiveWindow.addActuator("BallShooter", "Shooter", (Spark) ballShooter); 
         
         ballPickupPickup = new Spark(8);
         LiveWindow.addActuator("BallPickup", "Pickup", (Spark) ballPickupPickup);
         
-        ExtraController3 = new Spark(9);
+        extraController3 = new Spark(9);
+        LiveWindow.addActuator("ExtraController1", "Extra3", (Spark) extraController3);
 
         driveTrainRobotDrive = new RobotDrive(driveTrainLeft, driveTrainRight);
         driveTrainRobotDrive.setSafetyEnabled(true);
@@ -82,7 +95,6 @@ public class RobotMap {
         
         GearSinglePiston = new DoubleSolenoid(0, 1, 0);
         LiveWindow.addActuator("GearMech", "Single Piston", GearSinglePiston);
-        
         
         encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
         encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);
@@ -100,8 +112,6 @@ public class RobotMap {
         server2.startAutomaticCapture();
         
         compressor  = new Compressor(0);
-        
-
 
     }
     public Encoder getEncoderRight(){

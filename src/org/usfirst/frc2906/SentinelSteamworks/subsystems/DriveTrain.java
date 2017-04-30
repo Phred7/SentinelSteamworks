@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 //import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -23,7 +24,9 @@ public class DriveTrain extends Subsystem {
 
 	public void initDefaultCommand() {
 
-		setDefaultCommand(new DriveWithJoysticks());
+		setDefaultCommand(new DriveWithJoysticks()); //arcade
+		//setDefaultCommand(new DriveWithDoubleJoysticks()); //Tank with two
+		//setDefaultCommand(new DriveWithXboxTank()); //Tank on xbox controller
 	}
 
 	public void arcadeDrive(double move, double rotate) {
@@ -41,16 +44,16 @@ public class DriveTrain extends Subsystem {
 	public double getRightDistance() {
 		return RobotMap.encoderRight.getDistance();
 	}
-/*
+
 	public void driveWithJoysticks() {
 		robotDrive.arcadeDrive(Robot.oi.getJoystick1X(), Robot.oi.getJoystick1Y());
 	}
-*/	/*
-	public void driveWithJoysticks() {
-		robotDrive.tankDrive(Robot.oi.getJoystick3Y(), Robot.oi.getJoystick4Y());
-	} */
 	
-	public void driveWithJoysticks() {
+	public void driveWithJoysticks2() {
+		robotDrive.tankDrive(Robot.oi.getJoystick3Y(), Robot.oi.getJoystick4Y());
+	} 
+	
+	public void driveWithJoysticks3() {
 		robotDrive.tankDrive(Robot.oi.getJoystick5Y(), Robot.oi.getJoystick5Z());
 	}
 /*
