@@ -25,11 +25,15 @@ public class BallShooter extends Subsystem {
     }
     
     public void scaleShoot() {
-    	Robot.ballShooter.shoot(Robot.oi.getJoystick1Z());
+    	Robot.ballShooter.shoot(Robot.oi.getJoystick1ZR());
     }
     
-    public void stopShoot(){
+    public void stopShoot() {
     	Robot.ballShooter.shoot(0.0);
+    }
+    
+    public void getShooter() {
+    	
     }
 }
 

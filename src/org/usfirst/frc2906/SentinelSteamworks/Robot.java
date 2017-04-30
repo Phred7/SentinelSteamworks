@@ -28,58 +28,62 @@ import org.usfirst.frc2906.SentinelSteamworks.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
-	Command autonomousCommand;
+
 	Command AutoNone;
+	Command AutoTime;
 	Command AutoBaseLine;
 	Command AutoGearOnLeft;
-	Command AutoGearOnRight;
 	Command AutoGearStrait;
+	Command AutoGearOnRight;
+	Command autonomousCommand;
 	Command AutoTestDriveOnly;
-	Command AutoTime;
+	Command DriveWithXboxTank;
 	Command DriveWithJoysticks;
 	Command DriveWithDoubleJoysticks;
-	Command DriveWithXboxTank;
-
-	public static String DriveType;
+	
 	public static OI oi;
-	public static DriveTrain driveTrain;
-	public static GearMech gearMech;
-	public static BallPickup ballPickup;
 	public static Lift lift;
+	public static String DriveType;
+	public static GearMech gearMech;
 	public static Encoder leftDrive;
 	public static Encoder rightDrive;
+	public static DriveTrain driveTrain;
+	public static BallPickup ballPickup;
 	public static BallShooter ballShooter;
 
 	SendableChooser<Command> auto = new SendableChooser<>();
 	SendableChooser<Command> drive = new SendableChooser<>();
 
 	final String autoNone = "No Auto";
-	final String autoGearOnLeft = "GearOnLeft";
-	final String autoGearOnRight = "GearOnRight";
-	final String autoGearOnStrait = "GearOnAhead";
-	final String autoTestDriveOnly = "Test Drive";
-	final String autoBaseLine = "Base Line";
-	final String autoTime = "Auto Time Base Line";
-	final String driveWithJoysticks = "Drive With Arcadce";
-	final String driveWithDoubleJoysticks = "Drive With Two Joysticks, Tank Drive";
-	final String driveWithXboxTank = "Drive With Xbot Controller Tank Drive";
+	final String autoTime = "Time Base Line";
+	final String autoBaseLine = "Base Line Enc";
+	final String autoGearOnLeft = "Gear On Left";
+	final String autoGearOnRight = "Gear On Right";
+	final String autoGearOnStrait = "Gear On Ahead";
+	final String autoTestDriveOnly = "Test Drive Encoders";
+	final String driveWithXboxTank = "Drive With Xbox Controller Tank";
+	final String driveWithJoysticks = "Drive With One Joystick - Arcade";
+	final String driveWithDoubleJoysticks = "Drive With Two Joysticks - Tank Drive";
 
-	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoTime };
 	String[] driveList = { driveWithJoysticks, driveWithDoubleJoysticks, driveWithXboxTank };
+	String[] autoList = { autoNone, autoBaseLine, autoGearOnLeft, autoGearOnRight, autoGearOnStrait, autoTestDriveOnly, autoTime };
 
 	public static CameraServer cameraServer;
 
 	public void robotInit() {
 		RobotMap.init();
 
-		driveTrain = new DriveTrain();
+		oi = new OI();
+		lift = new Lift();
 		gearMech = new GearMech();
+		driveTrain = new DriveTrain();
 		ballPickup = new BallPickup();
 		ballShooter = new BallShooter();
-		lift = new Lift();
-		oi = new OI();
+
 		//DriveType = (Command) drive.getSelected();
 		//DriveType = (String) drive.getSelected();
+		
+		//SmartDashboard.getData("LiveWindow");;
 		
 		NetworkTable tableAuto = NetworkTable.getTable("SmartDashboard");
 		tableAuto.putStringArray("Auto List", autoList);
@@ -87,11 +91,11 @@ public class Robot extends IterativeRobot {
 		auto = new SendableChooser();
 		auto.addDefault("No Auto", new AutoNone());
 		auto.addObject("BaseLine", new AutoBaseLine());
+		auto.addObject("GearAhead", new AutoGearStrait());
 		auto.addObject("GearOnLeft", new AutoGearOnLeft());
 		auto.addObject("GearOnRight", new AutoGearOnRight());
-		auto.addObject("GearAhead", new AutoGearStrait());
-		auto.addObject("Test Drive Only", new AutoTestDriveOnly());
 		auto.addObject("Auto Time Base Line", new AutoTime());
+		auto.addObject("Test Drive Only", new AutoTestDriveOnly());
 		
 		SmartDashboard.putData("Auto modes", auto);
 		
@@ -99,13 +103,16 @@ public class Robot extends IterativeRobot {
 		tableDrive.putStringArray("Auto List", driveList);
 		
 		drive = new SendableChooser();
-	/*	drive.addDefault(driveWithJoysticks, new DriveWithJoysticks());
+	/*	drive.addObject(driveWithXboxTank, new DriveWithXboxTank());
+		drive.addDefault(driveWithJoysticks, new DriveWithJoysticks());
 		drive.addObject(driveWithDoubleJoysticks, new DriveWithDoubleJoysticks());
-		drive.addObject(driveWithXboxTank, new DriveWithXboxTank());
 		*/
-		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
 		SmartDashboard.putData("GearHold", new GearMechIn());
 		SmartDashboard.putData("GearRelease", new GearMechOut());
+		SmartDashboard.putData("Test GearAhead", new AutoGearStrait());
+		
+		SmartDashboard.getData((Robot.oi.getJoystick1ZR()*100) + "%");
+		
 	}
 
 	public void disabledInit() {
@@ -131,8 +138,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
         SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));
+		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
 
 	}
 
@@ -145,8 +152,9 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
         SmartDashboard.putNumber("encoder value left",  (RobotMap.encoderLeft.get()));
+		SmartDashboard.putNumber("encoder value right", (RobotMap.encoderRight.get()));
+		
 	}
 
 	public void testPeriodic() {

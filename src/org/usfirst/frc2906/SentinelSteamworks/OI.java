@@ -120,7 +120,7 @@ public class OI {
 		}
 	}
 	
-	public double getJoystick1Z() {
+	public double getJoystick1ZR() {
 		if (Math.abs(joystick1.getRawAxis(4)) > RobotMap.sensitivity) {
 			return 1.0 * joystick1.getRawAxis(4);
 		} else {
