@@ -7,16 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveTank extends Command {
+public class SFullShoot extends Command {
 
-		double leftSpeed;
-		double rightSpeed;
-    public DriveTank(double speed) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	leftSpeed = speed*-1.085;
-    	rightSpeed = speed;
-    	requires(Robot.driveTrain);
+    public SFullShoot() {
+        requires(Robot.ballShooter);
     }
 
     // Called just before this Command runs the first time
@@ -25,7 +19,7 @@ public class DriveTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
+    	Robot.ballShooter.sFullShoot();
     }
 
     // Make this return true when this Command no longer needs to run execute()

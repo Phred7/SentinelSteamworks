@@ -77,13 +77,13 @@ public class RobotMap {
         extraController5 = new Spark(6);
         LiveWindow.addActuator("ExtraController5", "Extra5", (Spark) extraController5);
 
-        ballPickupPickup = new Spark(7);
+        ballPickupPickup = new Spark(8);
         LiveWindow.addActuator("BallPickup", "Pickup", (Spark) ballPickupPickup);
 /*
         ballShooter = (CANSpeedController) new TalonSRX(11);
         LiveWindow.addActuator("BallShooter", "Shooter", (TalonSRX) ballShooter); 
  */       
-        ballShooter = new TalonSRX(8);
+        ballShooter = new TalonSRX(7);
         LiveWindow.addActuator("BallShooter", "Shooter", (TalonSRX) ballShooter); 
         
         extraController3 = new Spark(9);

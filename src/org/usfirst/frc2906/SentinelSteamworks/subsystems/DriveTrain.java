@@ -48,14 +48,14 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks() {
 		robotDrive.arcadeDrive(Robot.oi.getJoystick1X(), Robot.oi.getJoystick1Y());
 	}
-	
+	/*
 	public void driveWithJoysticks2() {
 		robotDrive.tankDrive(Robot.oi.getJoystick3Y(), Robot.oi.getJoystick4Y());
 	} 
 	
 	public void driveWithJoysticks3() {
 		robotDrive.tankDrive(Robot.oi.getJoystick5Y(), Robot.oi.getJoystick5Z());
-	}
+	} */
 /*
 	public void driveStraightEncs(double speed, int userFeet, int userInches) {
 		int calculatedTicks = (userFeet * tift) + (userInches * tinch);

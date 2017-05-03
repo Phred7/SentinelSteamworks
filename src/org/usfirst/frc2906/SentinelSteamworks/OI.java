@@ -29,6 +29,7 @@ public class OI {
 	public Joystick joystick3;
 	public Joystick joystick4;
 	public Joystick joystick5;
+	//public JoystickButton j1b0;
 	public JoystickButton j1b1;
 	public JoystickButton j1b2;
 	public JoystickButton j1b3;
@@ -63,6 +64,7 @@ public class OI {
 		joystick5 = new Joystick(4);
 		
 
+		//j1b0 = new JoystickButton(joystick1, 0);
 		j1b1 = new JoystickButton(joystick1, 1);
 		j1b2 = new JoystickButton(joystick1, 2);
 		j1b3 = new JoystickButton(joystick1, 3);
@@ -93,7 +95,8 @@ public class OI {
 		j1b6.whenPressed(new GearRelease());
 		j1b2.whenPressed(new GearMechOut());
 		j1b3.whenPressed(new GearMechIn());
-
+		j1b1.whileHeld(new ScaleShoot());
+		j1b1.whenReleased(new StopShoot());
 		// START JOY 2 COMMANDS
 		j2b1.whileHeld(new LiftUp());
 		j2b1.whenReleased(new LiftStop());
@@ -120,13 +123,14 @@ public class OI {
 		}
 	}
 	
-	public double getJoystick1ZR() {
-		if (Math.abs(joystick1.getRawAxis(4)) > RobotMap.sensitivity) {
-			return 1.0 * joystick1.getRawAxis(4);
+	public double getJoystick1Z() {
+		if (Math.abs(joystick1.getRawAxis(3)) > RobotMap.sensitivity) {
+			return -1.0 * (Math.abs(joystick1.getRawAxis(3)));
 		} else {
 			return 0.0;
 		}
 	}
+
 
 	public Joystick getJoystick2() {
 		return joystick2;
